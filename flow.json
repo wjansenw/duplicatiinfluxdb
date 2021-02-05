@@ -50,7 +50,8 @@
         "y": 220,
         "wires": [
             [
-                "63a5bf76.3aafc"
+                "63a5bf76.3aafc",
+                "2561a055.5c55d8"
             ]
         ]
     },
@@ -64,43 +65,6 @@
         "x": 300,
         "y": 100,
         "wires": []
-    },
-    {
-        "id": "b92be287.2c7018",
-        "type": "influxdb out",
-        "z": "679c5775.a84ad8",
-        "influxdb": "c58d0148.f85e28",
-        "name": "backup",
-        "measurement": "",
-        "precision": "",
-        "retentionPolicy": "",
-        "database": "database",
-        "precisionV18FluxV20": "ms",
-        "retentionPolicyV18Flux": "",
-        "org": "organisation",
-        "bucket": "bucket",
-        "x": 900,
-        "y": 240,
-        "wires": []
-    },
-    {
-        "id": "9684ea63.e90518",
-        "type": "function",
-        "z": "679c5775.a84ad8",
-        "name": "",
-        "func": "mypayload = [\n    {\n\t\tDeletedFiles: msg.payload.Data.DeletedFiles,\n\t\tDeletedFolders: msg.payload.Data.DeletedFolders,\n\t\tModifiedFiles: msg.payload.Data.ModifiedFiles,\n\t\tExaminedFiles: msg.payload.Data.ExaminedFiles,\n\t\tOpenedFiles: msg.payload.Data.OpenedFiles,\n\t\tAddedFiles: msg.payload.Data.AddedFiles,\n\t\tSizeOfModifiedFiles: msg.payload.Data.SizeOfModifiedFiles,\n\t\tSizeOfAddedFiles: msg.payload.Data.SizeOfAddedFiles,\n\t\tSizeOfExaminedFiles: msg.payload.Data.SizeOfExaminedFiles,\n\t\tSizeOfOpenedFiles: msg.payload.Data.SizeOfOpenedFiles,\n\t\tNotProcessedFiles: msg.payload.Data.NotProcessedFiles,\n\t\tAddedFolders: msg.payload.Data.AddedFolders,\n\t\tTooLargeFiles: msg.payload.Data.TooLargeFiles,\n\t\tFilesWithError: msg.payload.Data.FilesWithError,\n\t\tModifiedFolders: msg.payload.Data.ModifiedFolders,\n\t\tModifiedSymlinks: msg.payload.Data.ModifiedSymlinks,\n\t\tAddedSymlinks: msg.payload.Data.AddedSymlinks,\n\t\tDeletedSymlinks: msg.payload.Data.DeletedSymlinks,\n\t\tPartialBackup: msg.payload.Data.PartialBackup,\n\t\tDryrun: msg.payload.Data.Dryrun,\n\t\t//CompactResults: msg.payload.Data.CompactResults,\n\t\t//VacuumResults: msg.payload.Data.VacuumResults,\n\t\t//DeleteResults: msg.payload.Data.DeleteResults,\n\t\t//RepairResults: msg.payload.Data.RepairResults,\n\t\tParsedResult: msg.payload.Data.ParsedResult,\n\t\tVersion: msg.payload.Data.Version,\n\t\tEndTime: new Date(msg.payload.Data.EndTime).getTime(),\n\t\tBeginTime: new Date(msg.payload.Data.BeginTime).getTime(),\n\t\tDuration: new Date(msg.payload.Data.EndTime).getTime()-new Date(msg.payload.Data.BeginTime).getTime(),\n\t\tMessagesActualLength: msg.payload.Data.MessagesActualLength,\n\t\tWarningsActualLength: msg.payload.Data.WarningsActualLength,\n\t\tErrorsActualLength: msg.payload.Data.ErrorsActualLength,\n\t\tBackendStatisticsRemoteCalls: msg.payload.Data.BackendStatistics.RemoteCalls,\n\t\tBackendStatisticsBytesUploaded: msg.payload.Data.BackendStatistics.BytesUploaded,\n\t\tBackendStatisticsBytesDownloaded: msg.payload.Data.BackendStatistics.BytesDownloaded,\n\t\tBackendStatisticsFilesUploaded: msg.payload.Data.BackendStatistics.FilesUploaded,\n\t\tBackendStatisticsFilesDownloaded: msg.payload.Data.BackendStatistics.FilesDownloaded,\n\t\tBackendStatisticsFilesDeleted: msg.payload.Data.BackendStatistics.FilesDeleted,\n\t\tBackendStatisticsFoldersCreated: msg.payload.Data.BackendStatistics.FoldersCreated,\n\t\tBackendStatisticsRetryAttempts: msg.payload.Data.BackendStatistics.RetryAttempts,\n\t\tBackendStatisticsUnknownFileSize: msg.payload.Data.BackendStatistics.UnknownFileSize,\n\t\tBackendStatisticsUnknownFileCount: msg.payload.Data.BackendStatistics.UnknownFileCount,\n\t\tBackendStatisticsKnownFileCount: msg.payload.Data.BackendStatistics.KnownFileCount,\n\t\tBackendStatisticsKnownFileSize: msg.payload.Data.BackendStatistics.KnownFileSize,\n\t\tBackendStatisticsLastBackupDate: msg.payload.Data.BackendStatistics.LastBackupDate,\n\t\tBackendStatisticsBackupListCount: msg.payload.Data.BackendStatistics.BackupListCount,\n\t\tBackendStatisticsTotalQuotaSpace: msg.payload.Data.BackendStatistics.TotalQuotaSpace,\n\t\tBackendStatisticsFreeQuotaSpace: msg.payload.Data.BackendStatistics.FreeQuotaSpace,\n\t\tBackendStatisticsAssignedQuotaSpace: msg.payload.Data.BackendStatistics.AssignedQuotaSpace,\n\t\tBackendStatisticsReportedQuotaError: msg.payload.Data.BackendStatistics.ReportedQuotaError,\n\t\tBackendStatisticsReportedQuotaWarning: msg.payload.Data.BackendStatistics.ReportedQuotaWarning,\n\t\tBackendStatisticsMainOperation: msg.payload.Data.BackendStatistics.MainOperation,\n\t\tBackendStatisticsParsedResult: msg.payload.Data.BackendStatistics.ParsedResult,\n\t\tBackendStatisticsVersion: msg.payload.Data.BackendStatistics.Version,\n\t\tBackendStatisticsEndTime: msg.payload.Data.BackendStatistics.EndTime,\n\t\tBackendStatisticsBeginTime: msg.payload.Data.BackendStatistics.BeginTime,\n\t\tBackendStatisticsDuration: msg.payload.Data.BackendStatistics.Duration,\n\t\tBackendStatisticsMessagesActualLength: msg.payload.Data.BackendStatistics.MessagesActualLength,\n\t\tBackendStatisticsWarningsActualLength: msg.payload.Data.BackendStatistics.WarningsActualLength,\n\t\tBackendStatisticsErrorsActualLength: msg.payload.Data.BackendStatistics.ErrorsActualLength\n    },\n    {\n        BackupName: msg.payload.Extra[\"backup-name\"]\n    }\n]\n\nmsg.measurement=msg.payload.Data.MainOperation;\nmsg.payload=mypayload;\n\n\n\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "x": 680,
-        "y": 280,
-        "wires": [
-            [
-                "b92be287.2c7018",
-                "2ef4e93a.5e2a56"
-            ]
-        ]
     },
     {
         "id": "6be115fb.696f0c",
@@ -141,39 +105,40 @@
                 "vt": "str"
             },
             {
-                "t": "else"
+                "t": "eq",
+                "v": "Repair",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "Compact",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "Restore",
+                "vt": "str"
             }
         ],
         "checkall": "false",
         "repair": false,
-        "outputs": 2,
+        "outputs": 4,
         "x": 510,
         "y": 220,
         "wires": [
             [
-                "9684ea63.e90518"
+                "31f475f5.c91cba"
             ],
             [
-                "c9e39d07.c774c"
+                "47564f7e.896c38"
+            ],
+            [
+                "47564f7e.896c38"
+            ],
+            [
+                "19b4e6d1.06dff9"
             ]
         ]
-    },
-    {
-        "id": "c9e39d07.c774c",
-        "type": "debug",
-        "z": "679c5775.a84ad8",
-        "name": "others",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "payload.Data.MainOperation",
-        "targetType": "msg",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 670,
-        "y": 80,
-        "wires": []
     },
     {
         "id": "1206c168.36e417",
@@ -181,46 +146,17 @@
         "z": "679c5775.a84ad8",
         "influxdb": "c58d0148.f85e28",
         "name": "",
-        "query": "SELECT max(\"EndTime\") AS \"end_time\" FROM \"duplicati\".\"autogen\".\"Backup\" GROUP BY BackupName",
+        "query": "SELECT last(\"EndTime\") AS \"last_EndTime\" FROM \"duplicati\".\"autogen\".\"times\" GROUP BY \"BackupName\"",
         "rawOutput": false,
         "precision": "",
         "retentionPolicy": "",
         "org": "organisation",
-        "x": 380,
-        "y": 480,
+        "x": 1180,
+        "y": 240,
         "wires": [
             [
                 "12074b59.89b255",
                 "262ee358.b77724"
-            ]
-        ]
-    },
-    {
-        "id": "acef443.83fe438",
-        "type": "inject",
-        "z": "679c5775.a84ad8",
-        "name": "",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "1800",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "",
-        "payloadType": "date",
-        "x": 170,
-        "y": 600,
-        "wires": [
-            [
-                "1206c168.36e417"
             ]
         ]
     },
@@ -234,8 +170,8 @@
         "noerr": 0,
         "initialize": "",
         "finalize": "",
-        "x": 560,
-        "y": 580,
+        "x": 1360,
+        "y": 340,
         "wires": [
             [
                 "a32b3379.db3078",
@@ -256,8 +192,8 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 570,
-        "y": 420,
+        "x": 1370,
+        "y": 180,
         "wires": []
     },
     {
@@ -271,8 +207,8 @@
         "arraySpltType": "len",
         "stream": false,
         "addname": "",
-        "x": 570,
-        "y": 500,
+        "x": 1370,
+        "y": 260,
         "wires": [
             [
                 "3d1ba4a5.54f4c4"
@@ -292,8 +228,8 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 770,
-        "y": 500,
+        "x": 1570,
+        "y": 260,
         "wires": []
     },
     {
@@ -310,8 +246,8 @@
         "retentionPolicyV18Flux": "",
         "org": "organisation",
         "bucket": "bucket",
-        "x": 770,
-        "y": 600,
+        "x": 1570,
+        "y": 360,
         "wires": []
     },
     {
@@ -329,8 +265,142 @@
         "randomLast": "5",
         "randomUnits": "seconds",
         "drop": false,
-        "x": 200,
-        "y": 480,
+        "x": 1000,
+        "y": 240,
+        "wires": [
+            [
+                "1206c168.36e417"
+            ]
+        ]
+    },
+    {
+        "id": "31f475f5.c91cba",
+        "type": "function",
+        "z": "679c5775.a84ad8",
+        "name": "backup",
+        "func": "msg.payload = [\n    {\n        measurement: \"files\",\n        fields: {\n            Deleted: msg.payload.Data.DeletedFiles,\n\t\t\tModified: msg.payload.Data.ModifiedFiles,\n\t\t\tExamined: msg.payload.Data.ExaminedFiles,\n\t\t\tOpened: msg.payload.Data.OpenedFiles,\n\t\t\tAdded: msg.payload.Data.AddedFiles,\n\t\t\tNotProcessed: msg.payload.Data.NotProcessedFiles,\n\t\t\tTooLarge: msg.payload.Data.TooLargeFiles,\n\t\t\tWithError: msg.payload.Data.FilesWithError,\n\t\t\tFilesUploaded: msg.payload.Data.BackendStatistics.FilesUploaded,\n\t\t\tFilesDownloaded: msg.payload.Data.BackendStatistics.FilesDownloaded,\n\t\t\tFilesDeleted: msg.payload.Data.BackendStatistics.FilesDeleted,\n\t\t\tUnknownFileCount: msg.payload.Data.BackendStatistics.UnknownFileCount,\n\t\t\tKnownFileCount: msg.payload.Data.BackendStatistics.KnownFileCount\n        },\n        tags:{\n\t\t\tBackupName: msg.payload.Extra[\"backup-name\"],\n\t\t\tMainOperation: msg.payload.Data.MainOperation,\n\t\t\tParsedResult: msg.payload.Data.ParsedResult,\n\t\t\tVersion: msg.payload.Data.Version\n        },\n        timestamp: new Date(msg.payload.Data.BeginTime).getTime()\n    },\n    {\n        measurement: \"bytes\",\n        fields: {\n\t\t\tModified: msg.payload.Data.SizeOfModifiedFiles,\n\t\t\tAdded: msg.payload.Data.SizeOfAddedFiles,\n\t\t\tExamined: msg.payload.Data.SizeOfExaminedFiles,\n\t\t\tOpened: msg.payload.Data.SizeOfOpenedFiles,\n\t\t\tUploaded: msg.payload.Data.BackendStatistics.BytesUploaded,\n\t\t\tDownloaded: msg.payload.Data.BackendStatistics.BytesDownloaded,\n\t\t\tUnknownFile: msg.payload.Data.BackendStatistics.UnknownFileSize,\n\t\t\tKnown: msg.payload.Data.BackendStatistics.KnownFileSize\n        },\n        tags:{\n\t\t\tBackupName: msg.payload.Extra[\"backup-name\"],\n\t\t\tMainOperation: msg.payload.Data.MainOperation,\n\t\t\tParsedResult: msg.payload.Data.ParsedResult,\n\t\t\tVersion: msg.payload.Data.Version\n        },\n        timestamp: new Date(msg.payload.Data.BeginTime).getTime()\n    },\n\t{\n        measurement: \"times\",\n        fields: {\n\t\t\tEndTime: new Date(msg.payload.Data.EndTime).getTime(),\n\t\t\tBeginTime: new Date(msg.payload.Data.BeginTime).getTime(),\n\t\t\tDuration: new Date(msg.payload.Data.EndTime).getTime()-new Date(msg.payload.Data.BeginTime).getTime(),\n        },\n        tags:{\n\t\t\tBackupName: msg.payload.Extra[\"backup-name\"],\n\t\t\tMainOperation: msg.payload.Data.MainOperation,\n\t\t\tParsedResult: msg.payload.Data.ParsedResult,\n\t\t\tVersion: msg.payload.Data.Version\n        },\n        timestamp: new Date(msg.payload.Data.BeginTime).getTime()\n    }\n];\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 700,
+        "y": 40,
+        "wires": [
+            [
+                "4b256453.f0d4d4",
+                "349bf0d0.08bde8",
+                "2ef4e93a.5e2a56"
+            ]
+        ]
+    },
+    {
+        "id": "2561a055.5c55d8",
+        "type": "debug",
+        "z": "679c5775.a84ad8",
+        "name": "msg",
+        "active": true,
+        "tosidebar": true,
+        "console": true,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 470,
+        "y": 140,
+        "wires": []
+    },
+    {
+        "id": "47564f7e.896c38",
+        "type": "function",
+        "z": "679c5775.a84ad8",
+        "name": "repair/compact",
+        "func": "msg.payload = [\n    {\n        measurement: \"files\",\n        fields: {\n\t\t\tFilesUploaded: msg.payload.Data.BackendStatistics.FilesUploaded,\n\t\t\tFilesDownloaded: msg.payload.Data.BackendStatistics.FilesDownloaded,\n\t\t\tFilesDeleted: msg.payload.Data.BackendStatistics.FilesDeleted,\n\t\t\tUnknownFileCount: msg.payload.Data.BackendStatistics.UnknownFileCount,\n\t\t\tKnownFileCount: msg.payload.Data.BackendStatistics.KnownFileCount\n        },\n        tags:{\n\t\t\tBackupName: msg.payload.Extra[\"backup-name\"],\n\t\t\tMainOperation: msg.payload.Data.MainOperation,\n\t\t\tParsedResult: msg.payload.Data.ParsedResult,\n\t\t\tVersion: msg.payload.Data.Version\n        },\n        timestamp: new Date(msg.payload.Data.BeginTime).getTime()\n    },\n    {\n        measurement: \"bytes\",\n        fields: {\n\t\t\tUploaded: msg.payload.Data.BackendStatistics.BytesUploaded,\n\t\t\tDownloaded: msg.payload.Data.BackendStatistics.BytesDownloaded,\n\t\t\tUnknownFile: msg.payload.Data.BackendStatistics.UnknownFileSize,\n\t\t\tKnown: msg.payload.Data.BackendStatistics.KnownFileSize\n        },\n        tags:{\n\t\t\tBackupName: msg.payload.Extra[\"backup-name\"],\n\t\t\tMainOperation: msg.payload.Data.MainOperation,\n\t\t\tParsedResult: msg.payload.Data.ParsedResult,\n\t\t\tVersion: msg.payload.Data.Version\n        },\n        timestamp: new Date(msg.payload.Data.BeginTime).getTime()\n    },\n\t{\n        measurement: \"times\",\n        fields: {\n\t\t\tEndTime: new Date(msg.payload.Data.EndTime).getTime(),\n\t\t\tBeginTime: new Date(msg.payload.Data.BeginTime).getTime(),\n\t\t\tDuration: new Date(msg.payload.Data.EndTime).getTime()-new Date(msg.payload.Data.BeginTime).getTime(),\n        },\n        tags:{\n\t\t\tBackupName: msg.payload.Extra[\"backup-name\"],\n\t\t\tMainOperation: msg.payload.Data.MainOperation,\n\t\t\tParsedResult: msg.payload.Data.ParsedResult,\n\t\t\tVersion: msg.payload.Data.Version\n        },\n        timestamp: new Date(msg.payload.Data.BeginTime).getTime()\n    }\n];\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 720,
+        "y": 180,
+        "wires": [
+            [
+                "4b256453.f0d4d4",
+                "349bf0d0.08bde8",
+                "2ef4e93a.5e2a56"
+            ]
+        ]
+    },
+    {
+        "id": "19b4e6d1.06dff9",
+        "type": "function",
+        "z": "679c5775.a84ad8",
+        "name": "restore",
+        "func": "msg.payload = [\n    {\n        measurement: \"files\",\n        fields: {\n\t\t\tFilesRestored: msg.payload.Data.BackendStatistics.FilesRestored,\n\t\t\tFilesPatched: msg.payload.Data.BackendStatistics.FilesPatched,\n\t\t\tFilesDeleted: msg.payload.Data.BackendStatistics.FilesDeleted,\n\t\t\tUnknownFileCount: msg.payload.Data.BackendStatistics.UnknownFileCount,\n\t\t\tKnownFileCount: msg.payload.Data.BackendStatistics.KnownFileCount\n        },\n        tags:{\n\t\t\tBackupName: msg.payload.Extra[\"backup-name\"],\n\t\t\tMainOperation: msg.payload.Data.MainOperation,\n\t\t\tParsedResult: msg.payload.Data.ParsedResult,\n\t\t\tVersion: msg.payload.Data.Version\n        },\n        timestamp: new Date(msg.payload.Data.BeginTime).getTime()\n    },\n    {\n        measurement: \"bytes\",\n        fields: {\n\t\t\tRestored: msg.payload.Data.SizeOfRestoredFiles,\n\t\t\tUploaded: msg.payload.Data.BackendStatistics.BytesUploaded,\n\t\t\tDownloaded: msg.payload.Data.BackendStatistics.BytesDownloaded,\n\t\t\tUnknownFile: msg.payload.Data.BackendStatistics.UnknownFileSize,\n\t\t\tKnown: msg.payload.Data.BackendStatistics.KnownFileSize\n        },\n        tags:{\n\t\t\tBackupName: msg.payload.Extra[\"backup-name\"],\n\t\t\tMainOperation: msg.payload.Data.MainOperation,\n\t\t\tParsedResult: msg.payload.Data.ParsedResult,\n\t\t\tVersion: msg.payload.Data.Version\n        },\n        timestamp: new Date(msg.payload.Data.BeginTime).getTime()\n    },\n\t{\n        measurement: \"times\",\n        fields: {\n\t\t\tEndTime: new Date(msg.payload.Data.EndTime).getTime(),\n\t\t\tBeginTime: new Date(msg.payload.Data.BeginTime).getTime(),\n\t\t\tDuration: new Date(msg.payload.Data.EndTime).getTime()-new Date(msg.payload.Data.BeginTime).getTime(),\n        },\n        tags:{\n\t\t\tBackupName: msg.payload.Extra[\"backup-name\"],\n\t\t\tMainOperation: msg.payload.Data.MainOperation,\n\t\t\tParsedResult: msg.payload.Data.ParsedResult,\n\t\t\tVersion: msg.payload.Data.Version\n        },\n        timestamp: new Date(msg.payload.Data.BeginTime).getTime()\n    }\n];\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 700,
+        "y": 280,
+        "wires": [
+            [
+                "4b256453.f0d4d4",
+                "349bf0d0.08bde8",
+                "2ef4e93a.5e2a56"
+            ]
+        ]
+    },
+    {
+        "id": "4b256453.f0d4d4",
+        "type": "influxdb batch",
+        "z": "679c5775.a84ad8",
+        "influxdb": "c58d0148.f85e28",
+        "precision": "ms",
+        "retentionPolicy": "",
+        "name": "",
+        "x": 1060,
+        "y": 40,
+        "wires": []
+    },
+    {
+        "id": "349bf0d0.08bde8",
+        "type": "debug",
+        "z": "679c5775.a84ad8",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1050,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "e7bc50af.06c1a8",
+        "type": "inject",
+        "z": "679c5775.a84ad8",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "900",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 1020,
+        "y": 340,
         "wires": [
             [
                 "1206c168.36e417"
