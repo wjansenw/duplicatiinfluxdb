@@ -1,6 +1,6 @@
 {
     "name": "test",
-    "description": "A Node-RED Project",
+    "description": "DuplicatiInfluxDBMonitoring",
     "version": "0.0.1",
     "dependencies": {},
     "node-red": {

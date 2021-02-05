@@ -1,1 +1,340 @@
-[]
+[
+    {
+        "id": "679c5775.a84ad8",
+        "type": "tab",
+        "label": "Duplicati",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "c58d0148.f85e28",
+        "type": "influxdb",
+        "hostname": "192.168.0.202",
+        "port": "8086",
+        "protocol": "http",
+        "database": "duplicati",
+        "name": "influxdb",
+        "usetls": false,
+        "tls": "",
+        "influxdbVersion": "1.x",
+        "url": "http://localhost:8086",
+        "rejectUnauthorized": true
+    },
+    {
+        "id": "317fa54a.feaf92",
+        "type": "http in",
+        "z": "679c5775.a84ad8",
+        "name": "duplicati",
+        "url": "/duplicati",
+        "method": "post",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 130,
+        "y": 140,
+        "wires": [
+            [
+                "7c0f221e.09a594",
+                "13a58b9b.126104"
+            ]
+        ]
+    },
+    {
+        "id": "7c0f221e.09a594",
+        "type": "json",
+        "z": "679c5775.a84ad8",
+        "name": "duplicati response",
+        "property": "payload",
+        "action": "obj",
+        "pretty": true,
+        "x": 330,
+        "y": 220,
+        "wires": [
+            [
+                "63a5bf76.3aafc"
+            ]
+        ]
+    },
+    {
+        "id": "13a58b9b.126104",
+        "type": "http response",
+        "z": "679c5775.a84ad8",
+        "name": "",
+        "statusCode": "200",
+        "headers": {},
+        "x": 300,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "b92be287.2c7018",
+        "type": "influxdb out",
+        "z": "679c5775.a84ad8",
+        "influxdb": "c58d0148.f85e28",
+        "name": "backup",
+        "measurement": "",
+        "precision": "",
+        "retentionPolicy": "",
+        "database": "database",
+        "precisionV18FluxV20": "ms",
+        "retentionPolicyV18Flux": "",
+        "org": "organisation",
+        "bucket": "bucket",
+        "x": 900,
+        "y": 240,
+        "wires": []
+    },
+    {
+        "id": "9684ea63.e90518",
+        "type": "function",
+        "z": "679c5775.a84ad8",
+        "name": "",
+        "func": "mypayload = [\n    {\n\t\tDeletedFiles: msg.payload.Data.DeletedFiles,\n\t\tDeletedFolders: msg.payload.Data.DeletedFolders,\n\t\tModifiedFiles: msg.payload.Data.ModifiedFiles,\n\t\tExaminedFiles: msg.payload.Data.ExaminedFiles,\n\t\tOpenedFiles: msg.payload.Data.OpenedFiles,\n\t\tAddedFiles: msg.payload.Data.AddedFiles,\n\t\tSizeOfModifiedFiles: msg.payload.Data.SizeOfModifiedFiles,\n\t\tSizeOfAddedFiles: msg.payload.Data.SizeOfAddedFiles,\n\t\tSizeOfExaminedFiles: msg.payload.Data.SizeOfExaminedFiles,\n\t\tSizeOfOpenedFiles: msg.payload.Data.SizeOfOpenedFiles,\n\t\tNotProcessedFiles: msg.payload.Data.NotProcessedFiles,\n\t\tAddedFolders: msg.payload.Data.AddedFolders,\n\t\tTooLargeFiles: msg.payload.Data.TooLargeFiles,\n\t\tFilesWithError: msg.payload.Data.FilesWithError,\n\t\tModifiedFolders: msg.payload.Data.ModifiedFolders,\n\t\tModifiedSymlinks: msg.payload.Data.ModifiedSymlinks,\n\t\tAddedSymlinks: msg.payload.Data.AddedSymlinks,\n\t\tDeletedSymlinks: msg.payload.Data.DeletedSymlinks,\n\t\tPartialBackup: msg.payload.Data.PartialBackup,\n\t\tDryrun: msg.payload.Data.Dryrun,\n\t\t//CompactResults: msg.payload.Data.CompactResults,\n\t\t//VacuumResults: msg.payload.Data.VacuumResults,\n\t\t//DeleteResults: msg.payload.Data.DeleteResults,\n\t\t//RepairResults: msg.payload.Data.RepairResults,\n\t\tParsedResult: msg.payload.Data.ParsedResult,\n\t\tVersion: msg.payload.Data.Version,\n\t\tEndTime: new Date(msg.payload.Data.EndTime).getTime(),\n\t\tBeginTime: new Date(msg.payload.Data.BeginTime).getTime(),\n\t\tDuration: new Date(msg.payload.Data.EndTime).getTime()-new Date(msg.payload.Data.BeginTime).getTime(),\n\t\tMessagesActualLength: msg.payload.Data.MessagesActualLength,\n\t\tWarningsActualLength: msg.payload.Data.WarningsActualLength,\n\t\tErrorsActualLength: msg.payload.Data.ErrorsActualLength,\n\t\tBackendStatisticsRemoteCalls: msg.payload.Data.BackendStatistics.RemoteCalls,\n\t\tBackendStatisticsBytesUploaded: msg.payload.Data.BackendStatistics.BytesUploaded,\n\t\tBackendStatisticsBytesDownloaded: msg.payload.Data.BackendStatistics.BytesDownloaded,\n\t\tBackendStatisticsFilesUploaded: msg.payload.Data.BackendStatistics.FilesUploaded,\n\t\tBackendStatisticsFilesDownloaded: msg.payload.Data.BackendStatistics.FilesDownloaded,\n\t\tBackendStatisticsFilesDeleted: msg.payload.Data.BackendStatistics.FilesDeleted,\n\t\tBackendStatisticsFoldersCreated: msg.payload.Data.BackendStatistics.FoldersCreated,\n\t\tBackendStatisticsRetryAttempts: msg.payload.Data.BackendStatistics.RetryAttempts,\n\t\tBackendStatisticsUnknownFileSize: msg.payload.Data.BackendStatistics.UnknownFileSize,\n\t\tBackendStatisticsUnknownFileCount: msg.payload.Data.BackendStatistics.UnknownFileCount,\n\t\tBackendStatisticsKnownFileCount: msg.payload.Data.BackendStatistics.KnownFileCount,\n\t\tBackendStatisticsKnownFileSize: msg.payload.Data.BackendStatistics.KnownFileSize,\n\t\tBackendStatisticsLastBackupDate: msg.payload.Data.BackendStatistics.LastBackupDate,\n\t\tBackendStatisticsBackupListCount: msg.payload.Data.BackendStatistics.BackupListCount,\n\t\tBackendStatisticsTotalQuotaSpace: msg.payload.Data.BackendStatistics.TotalQuotaSpace,\n\t\tBackendStatisticsFreeQuotaSpace: msg.payload.Data.BackendStatistics.FreeQuotaSpace,\n\t\tBackendStatisticsAssignedQuotaSpace: msg.payload.Data.BackendStatistics.AssignedQuotaSpace,\n\t\tBackendStatisticsReportedQuotaError: msg.payload.Data.BackendStatistics.ReportedQuotaError,\n\t\tBackendStatisticsReportedQuotaWarning: msg.payload.Data.BackendStatistics.ReportedQuotaWarning,\n\t\tBackendStatisticsMainOperation: msg.payload.Data.BackendStatistics.MainOperation,\n\t\tBackendStatisticsParsedResult: msg.payload.Data.BackendStatistics.ParsedResult,\n\t\tBackendStatisticsVersion: msg.payload.Data.BackendStatistics.Version,\n\t\tBackendStatisticsEndTime: msg.payload.Data.BackendStatistics.EndTime,\n\t\tBackendStatisticsBeginTime: msg.payload.Data.BackendStatistics.BeginTime,\n\t\tBackendStatisticsDuration: msg.payload.Data.BackendStatistics.Duration,\n\t\tBackendStatisticsMessagesActualLength: msg.payload.Data.BackendStatistics.MessagesActualLength,\n\t\tBackendStatisticsWarningsActualLength: msg.payload.Data.BackendStatistics.WarningsActualLength,\n\t\tBackendStatisticsErrorsActualLength: msg.payload.Data.BackendStatistics.ErrorsActualLength\n    },\n    {\n        BackupName: msg.payload.Extra[\"backup-name\"]\n    }\n]\n\nmsg.measurement=msg.payload.Data.MainOperation;\nmsg.payload=mypayload;\n\n\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 680,
+        "y": 280,
+        "wires": [
+            [
+                "b92be287.2c7018",
+                "2ef4e93a.5e2a56"
+            ]
+        ]
+    },
+    {
+        "id": "6be115fb.696f0c",
+        "type": "inject",
+        "z": "679c5775.a84ad8",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "{ \t\"Data\": { \t\t\"DeletedFiles\": 0, \t\t\"DeletedFolders\": 0, \t\t\"ModifiedFiles\": 0, \t\t\"ExaminedFiles\": 1, \t\t\"OpenedFiles\": 0, \t\t\"AddedFiles\": 0, \t\t\"SizeOfModifiedFiles\": 0, \t\t\"SizeOfAddedFiles\": 0, \t\t\"SizeOfExaminedFiles\": 1150, \t\t\"SizeOfOpenedFiles\": 0, \t\t\"NotProcessedFiles\": 0, \t\t\"AddedFolders\": 0, \t\t\"TooLargeFiles\": 0, \t\t\"FilesWithError\": 0, \t\t\"ModifiedFolders\": 0, \t\t\"ModifiedSymlinks\": 0, \t\t\"AddedSymlinks\": 0, \t\t\"DeletedSymlinks\": 0, \t\t\"PartialBackup\": false, \t\t\"Dryrun\": false, \t\t\"MainOperation\": \"Backup\", \t\t\"CompactResults\": null, \t\t\"VacuumResults\": null, \t\t\"DeleteResults\": null, \t\t\"RepairResults\": null, \t\t\"TestResults\": { \t\t\t\"MainOperation\": \"Test\", \t\t\t\"VerificationsActualLength\": 3, \t\t\t\"Verifications\": [ \t\t\t\t{ \t\t\t\t\t\"Key\": \"duplicati-20210202T135541Z.dlist.zip\", \t\t\t\t\t\"Value\": [] \t\t\t\t}, \t\t\t\t{ \t\t\t\t\t\"Key\": \"duplicati-i822c492d969c4cc5963c9fec51210b3f.dindex.zip\", \t\t\t\t\t\"Value\": [] \t\t\t\t}, \t\t\t\t{ \t\t\t\t\t\"Key\": \"duplicati-bd9fc0a5c042d4d49a85fcf4a49e3393b.dblock.zip\", \t\t\t\t\t\"Value\": [] \t\t\t\t} \t\t\t], \t\t\t\"ParsedResult\": \"Success\", \t\t\t\"Version\": \"2.0.5.0 (2.0.5.0_experimental_2020-01-03)\", \t\t\t\"EndTime\": \"2021-02-03T12:25:08.384488Z\", \t\t\t\"BeginTime\": \"2021-02-03T12:25:07.650245Z\", \t\t\t\"Duration\": \"00:00:00.7342430\", \t\t\t\"MessagesActualLength\": 0, \t\t\t\"WarningsActualLength\": 0, \t\t\t\"ErrorsActualLength\": 0, \t\t\t\"BackendStatistics\": { \t\t\t\t\"RemoteCalls\": 5, \t\t\t\t\"BytesUploaded\": 0, \t\t\t\t\"BytesDownloaded\": 2272, \t\t\t\t\"FilesUploaded\": 0, \t\t\t\t\"FilesDownloaded\": 3, \t\t\t\t\"FilesDeleted\": 0, \t\t\t\t\"FoldersCreated\": 0, \t\t\t\t\"RetryAttempts\": 0, \t\t\t\t\"UnknownFileSize\": 0, \t\t\t\t\"UnknownFileCount\": 0, \t\t\t\t\"KnownFileCount\": 3, \t\t\t\t\"KnownFileSize\": 2272, \t\t\t\t\"LastBackupDate\": \"2021-02-02T14:55:41+01:00\", \t\t\t\t\"BackupListCount\": 1, \t\t\t\t\"TotalQuotaSpace\": 979501772800, \t\t\t\t\"FreeQuotaSpace\": 20295626752, \t\t\t\t\"AssignedQuotaSpace\": -1, \t\t\t\t\"ReportedQuotaError\": false, \t\t\t\t\"ReportedQuotaWarning\": false, \t\t\t\t\"MainOperation\": \"Backup\", \t\t\t\t\"ParsedResult\": \"Success\", \t\t\t\t\"Version\": \"2.0.5.0 (2.0.5.0_experimental_2020-01-03)\", \t\t\t\t\"EndTime\": \"0001-01-01T00:00:00\", \t\t\t\t\"BeginTime\": \"2021-02-03T12:25:00.509716Z\", \t\t\t\t\"Duration\": \"00:00:00\", \t\t\t\t\"MessagesActualLength\": 0, \t\t\t\t\"WarningsActualLength\": 0, \t\t\t\t\"ErrorsActualLength\": 0 \t\t\t} \t\t}, \t\t\"ParsedResult\": \"Success\", \t\t\"Version\": \"2.0.5.0 (2.0.5.0_experimental_2020-01-03)\", \t\t\"EndTime\": \"2021-02-03T12:25:08.458401Z\", \t\t\"BeginTime\": \"2021-02-03T12:25:00.509696Z\", \t\t\"Duration\": \"00:00:07.9487050\", \t\t\"MessagesActualLength\": 11, \t\t\"WarningsActualLength\": 0, \t\t\"ErrorsActualLength\": 0, \t\t\"BackendStatistics\": { \t\t\t\"RemoteCalls\": 5, \t\t\t\"BytesUploaded\": 0, \t\t\t\"BytesDownloaded\": 2272, \t\t\t\"FilesUploaded\": 0, \t\t\t\"FilesDownloaded\": 3, \t\t\t\"FilesDeleted\": 0, \t\t\t\"FoldersCreated\": 0, \t\t\t\"RetryAttempts\": 0, \t\t\t\"UnknownFileSize\": 0, \t\t\t\"UnknownFileCount\": 0, \t\t\t\"KnownFileCount\": 3, \t\t\t\"KnownFileSize\": 2272, \t\t\t\"LastBackupDate\": \"2021-02-02T14:55:41+01:00\", \t\t\t\"BackupListCount\": 1, \t\t\t\"TotalQuotaSpace\": 979501772800, \t\t\t\"FreeQuotaSpace\": 20295626752, \t\t\t\"AssignedQuotaSpace\": -1, \t\t\t\"ReportedQuotaError\": false, \t\t\t\"ReportedQuotaWarning\": false, \t\t\t\"MainOperation\": \"Backup\", \t\t\t\"ParsedResult\": \"Success\", \t\t\t\"Version\": \"2.0.5.0 (2.0.5.0_experimental_2020-01-03)\", \t\t\t\"EndTime\": \"0001-01-01T00:00:00\", \t\t\t\"BeginTime\": \"2021-02-03T12:25:00.509716Z\", \t\t\t\"Duration\": \"00:00:00\", \t\t\t\"MessagesActualLength\": 0, \t\t\t\"WarningsActualLength\": 0, \t\t\t\"ErrorsActualLength\": 0 \t\t} \t}, \t\"Extra\": { \t\t\"OperationName\": \"Backup\", \t\t\"backup-name\": \"test\" \t}, \t\"LogLines\": [] }",
+        "payloadType": "str",
+        "x": 120,
+        "y": 280,
+        "wires": [
+            [
+                "7c0f221e.09a594"
+            ]
+        ]
+    },
+    {
+        "id": "63a5bf76.3aafc",
+        "type": "switch",
+        "z": "679c5775.a84ad8",
+        "name": "",
+        "property": "payload.Data.MainOperation",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "Backup",
+                "vt": "str"
+            },
+            {
+                "t": "else"
+            }
+        ],
+        "checkall": "false",
+        "repair": false,
+        "outputs": 2,
+        "x": 510,
+        "y": 220,
+        "wires": [
+            [
+                "9684ea63.e90518"
+            ],
+            [
+                "c9e39d07.c774c"
+            ]
+        ]
+    },
+    {
+        "id": "c9e39d07.c774c",
+        "type": "debug",
+        "z": "679c5775.a84ad8",
+        "name": "others",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload.Data.MainOperation",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 670,
+        "y": 80,
+        "wires": []
+    },
+    {
+        "id": "1206c168.36e417",
+        "type": "influxdb in",
+        "z": "679c5775.a84ad8",
+        "influxdb": "c58d0148.f85e28",
+        "name": "",
+        "query": "SELECT max(\"EndTime\") AS \"end_time\" FROM \"duplicati\".\"autogen\".\"Backup\" GROUP BY BackupName",
+        "rawOutput": false,
+        "precision": "",
+        "retentionPolicy": "",
+        "org": "organisation",
+        "x": 380,
+        "y": 480,
+        "wires": [
+            [
+                "12074b59.89b255",
+                "262ee358.b77724"
+            ]
+        ]
+    },
+    {
+        "id": "acef443.83fe438",
+        "type": "inject",
+        "z": "679c5775.a84ad8",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "1800",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 170,
+        "y": 600,
+        "wires": [
+            [
+                "1206c168.36e417"
+            ]
+        ]
+    },
+    {
+        "id": "3d1ba4a5.54f4c4",
+        "type": "function",
+        "z": "679c5775.a84ad8",
+        "name": "",
+        "func": "current_time = new Date().getTime();\nend_time = new Date(msg.payload.time).getTime();\nduration = current_time - end_time;\n\n\n\n\npayload = [\n    {\n\t\tDurationSinceLastBackup: duration,\n\n    },\n    {\n        BackupName: msg.payload.BackupName\n    }\n]\n\nmsg.payload = payload;\nmsg.measurement = \"LastBackup\"\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 560,
+        "y": 580,
+        "wires": [
+            [
+                "a32b3379.db3078",
+                "10daee26.b97e4a"
+            ]
+        ]
+    },
+    {
+        "id": "12074b59.89b255",
+        "type": "debug",
+        "z": "679c5775.a84ad8",
+        "name": "",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 570,
+        "y": 420,
+        "wires": []
+    },
+    {
+        "id": "262ee358.b77724",
+        "type": "split",
+        "z": "679c5775.a84ad8",
+        "name": "",
+        "splt": "\\n",
+        "spltType": "str",
+        "arraySplt": 1,
+        "arraySpltType": "len",
+        "stream": false,
+        "addname": "",
+        "x": 570,
+        "y": 500,
+        "wires": [
+            [
+                "3d1ba4a5.54f4c4"
+            ]
+        ]
+    },
+    {
+        "id": "a32b3379.db3078",
+        "type": "debug",
+        "z": "679c5775.a84ad8",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 770,
+        "y": 500,
+        "wires": []
+    },
+    {
+        "id": "10daee26.b97e4a",
+        "type": "influxdb out",
+        "z": "679c5775.a84ad8",
+        "influxdb": "c58d0148.f85e28",
+        "name": "",
+        "measurement": "",
+        "precision": "",
+        "retentionPolicy": "",
+        "database": "database",
+        "precisionV18FluxV20": "ms",
+        "retentionPolicyV18Flux": "",
+        "org": "organisation",
+        "bucket": "bucket",
+        "x": 770,
+        "y": 600,
+        "wires": []
+    },
+    {
+        "id": "2ef4e93a.5e2a56",
+        "type": "delay",
+        "z": "679c5775.a84ad8",
+        "name": "",
+        "pauseType": "delay",
+        "timeout": "1",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "x": 200,
+        "y": 480,
+        "wires": [
+            [
+                "1206c168.36e417"
+            ]
+        ]
+    }
+]
