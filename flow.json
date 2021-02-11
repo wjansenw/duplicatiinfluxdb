@@ -34,7 +34,7 @@
         "wires": [
             [
                 "7c0f221e.09a594",
-                "13a58b9b.126104"
+                "7d91ffe7.fd07d"
             ]
         ]
     },
@@ -47,11 +47,11 @@
         "action": "obj",
         "pretty": true,
         "x": 330,
-        "y": 220,
+        "y": 200,
         "wires": [
             [
                 "63a5bf76.3aafc",
-                "2561a055.5c55d8"
+                "13a58b9b.126104"
             ]
         ]
     },
@@ -62,34 +62,9 @@
         "name": "",
         "statusCode": "200",
         "headers": {},
-        "x": 300,
-        "y": 100,
+        "x": 520,
+        "y": 140,
         "wires": []
-    },
-    {
-        "id": "6be115fb.696f0c",
-        "type": "inject",
-        "z": "679c5775.a84ad8",
-        "name": "",
-        "props": [
-            {
-                "p": "payload"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "{ \t\"Data\": { \t\t\"DeletedFiles\": 0, \t\t\"DeletedFolders\": 0, \t\t\"ModifiedFiles\": 0, \t\t\"ExaminedFiles\": 1, \t\t\"OpenedFiles\": 0, \t\t\"AddedFiles\": 0, \t\t\"SizeOfModifiedFiles\": 0, \t\t\"SizeOfAddedFiles\": 0, \t\t\"SizeOfExaminedFiles\": 1150, \t\t\"SizeOfOpenedFiles\": 0, \t\t\"NotProcessedFiles\": 0, \t\t\"AddedFolders\": 0, \t\t\"TooLargeFiles\": 0, \t\t\"FilesWithError\": 0, \t\t\"ModifiedFolders\": 0, \t\t\"ModifiedSymlinks\": 0, \t\t\"AddedSymlinks\": 0, \t\t\"DeletedSymlinks\": 0, \t\t\"PartialBackup\": false, \t\t\"Dryrun\": false, \t\t\"MainOperation\": \"Backup\", \t\t\"CompactResults\": null, \t\t\"VacuumResults\": null, \t\t\"DeleteResults\": null, \t\t\"RepairResults\": null, \t\t\"TestResults\": { \t\t\t\"MainOperation\": \"Test\", \t\t\t\"VerificationsActualLength\": 3, \t\t\t\"Verifications\": [ \t\t\t\t{ \t\t\t\t\t\"Key\": \"duplicati-20210202T135541Z.dlist.zip\", \t\t\t\t\t\"Value\": [] \t\t\t\t}, \t\t\t\t{ \t\t\t\t\t\"Key\": \"duplicati-i822c492d969c4cc5963c9fec51210b3f.dindex.zip\", \t\t\t\t\t\"Value\": [] \t\t\t\t}, \t\t\t\t{ \t\t\t\t\t\"Key\": \"duplicati-bd9fc0a5c042d4d49a85fcf4a49e3393b.dblock.zip\", \t\t\t\t\t\"Value\": [] \t\t\t\t} \t\t\t], \t\t\t\"ParsedResult\": \"Success\", \t\t\t\"Version\": \"2.0.5.0 (2.0.5.0_experimental_2020-01-03)\", \t\t\t\"EndTime\": \"2021-02-03T12:25:08.384488Z\", \t\t\t\"BeginTime\": \"2021-02-03T12:25:07.650245Z\", \t\t\t\"Duration\": \"00:00:00.7342430\", \t\t\t\"MessagesActualLength\": 0, \t\t\t\"WarningsActualLength\": 0, \t\t\t\"ErrorsActualLength\": 0, \t\t\t\"BackendStatistics\": { \t\t\t\t\"RemoteCalls\": 5, \t\t\t\t\"BytesUploaded\": 0, \t\t\t\t\"BytesDownloaded\": 2272, \t\t\t\t\"FilesUploaded\": 0, \t\t\t\t\"FilesDownloaded\": 3, \t\t\t\t\"FilesDeleted\": 0, \t\t\t\t\"FoldersCreated\": 0, \t\t\t\t\"RetryAttempts\": 0, \t\t\t\t\"UnknownFileSize\": 0, \t\t\t\t\"UnknownFileCount\": 0, \t\t\t\t\"KnownFileCount\": 3, \t\t\t\t\"KnownFileSize\": 2272, \t\t\t\t\"LastBackupDate\": \"2021-02-02T14:55:41+01:00\", \t\t\t\t\"BackupListCount\": 1, \t\t\t\t\"TotalQuotaSpace\": 979501772800, \t\t\t\t\"FreeQuotaSpace\": 20295626752, \t\t\t\t\"AssignedQuotaSpace\": -1, \t\t\t\t\"ReportedQuotaError\": false, \t\t\t\t\"ReportedQuotaWarning\": false, \t\t\t\t\"MainOperation\": \"Backup\", \t\t\t\t\"ParsedResult\": \"Success\", \t\t\t\t\"Version\": \"2.0.5.0 (2.0.5.0_experimental_2020-01-03)\", \t\t\t\t\"EndTime\": \"0001-01-01T00:00:00\", \t\t\t\t\"BeginTime\": \"2021-02-03T12:25:00.509716Z\", \t\t\t\t\"Duration\": \"00:00:00\", \t\t\t\t\"MessagesActualLength\": 0, \t\t\t\t\"WarningsActualLength\": 0, \t\t\t\t\"ErrorsActualLength\": 0 \t\t\t} \t\t}, \t\t\"ParsedResult\": \"Success\", \t\t\"Version\": \"2.0.5.0 (2.0.5.0_experimental_2020-01-03)\", \t\t\"EndTime\": \"2021-02-03T12:25:08.458401Z\", \t\t\"BeginTime\": \"2021-02-03T12:25:00.509696Z\", \t\t\"Duration\": \"00:00:07.9487050\", \t\t\"MessagesActualLength\": 11, \t\t\"WarningsActualLength\": 0, \t\t\"ErrorsActualLength\": 0, \t\t\"BackendStatistics\": { \t\t\t\"RemoteCalls\": 5, \t\t\t\"BytesUploaded\": 0, \t\t\t\"BytesDownloaded\": 2272, \t\t\t\"FilesUploaded\": 0, \t\t\t\"FilesDownloaded\": 3, \t\t\t\"FilesDeleted\": 0, \t\t\t\"FoldersCreated\": 0, \t\t\t\"RetryAttempts\": 0, \t\t\t\"UnknownFileSize\": 0, \t\t\t\"UnknownFileCount\": 0, \t\t\t\"KnownFileCount\": 3, \t\t\t\"KnownFileSize\": 2272, \t\t\t\"LastBackupDate\": \"2021-02-02T14:55:41+01:00\", \t\t\t\"BackupListCount\": 1, \t\t\t\"TotalQuotaSpace\": 979501772800, \t\t\t\"FreeQuotaSpace\": 20295626752, \t\t\t\"AssignedQuotaSpace\": -1, \t\t\t\"ReportedQuotaError\": false, \t\t\t\"ReportedQuotaWarning\": false, \t\t\t\"MainOperation\": \"Backup\", \t\t\t\"ParsedResult\": \"Success\", \t\t\t\"Version\": \"2.0.5.0 (2.0.5.0_experimental_2020-01-03)\", \t\t\t\"EndTime\": \"0001-01-01T00:00:00\", \t\t\t\"BeginTime\": \"2021-02-03T12:25:00.509716Z\", \t\t\t\"Duration\": \"00:00:00\", \t\t\t\"MessagesActualLength\": 0, \t\t\t\"WarningsActualLength\": 0, \t\t\t\"ErrorsActualLength\": 0 \t\t} \t}, \t\"Extra\": { \t\t\"OperationName\": \"Backup\", \t\t\"backup-name\": \"test\" \t}, \t\"LogLines\": [] }",
-        "payloadType": "str",
-        "x": 120,
-        "y": 280,
-        "wires": [
-            [
-                "7c0f221e.09a594"
-            ]
-        ]
     },
     {
         "id": "63a5bf76.3aafc",
@@ -124,7 +99,7 @@
         "repair": false,
         "outputs": 4,
         "x": 510,
-        "y": 220,
+        "y": 200,
         "wires": [
             [
                 "31f475f5.c91cba"
@@ -155,7 +130,6 @@
         "y": 240,
         "wires": [
             [
-                "12074b59.89b255",
                 "262ee358.b77724"
             ]
         ]
@@ -170,31 +144,13 @@
         "noerr": 0,
         "initialize": "",
         "finalize": "",
-        "x": 1360,
-        "y": 340,
+        "x": 1500,
+        "y": 240,
         "wires": [
             [
-                "a32b3379.db3078",
                 "10daee26.b97e4a"
             ]
         ]
-    },
-    {
-        "id": "12074b59.89b255",
-        "type": "debug",
-        "z": "679c5775.a84ad8",
-        "name": "",
-        "active": false,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "payload",
-        "targetType": "msg",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 1370,
-        "y": 180,
-        "wires": []
     },
     {
         "id": "262ee358.b77724",
@@ -207,30 +163,13 @@
         "arraySpltType": "len",
         "stream": false,
         "addname": "",
-        "x": 1370,
-        "y": 260,
+        "x": 1350,
+        "y": 240,
         "wires": [
             [
                 "3d1ba4a5.54f4c4"
             ]
         ]
-    },
-    {
-        "id": "a32b3379.db3078",
-        "type": "debug",
-        "z": "679c5775.a84ad8",
-        "name": "",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "payload",
-        "targetType": "msg",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 1570,
-        "y": 260,
-        "wires": []
     },
     {
         "id": "10daee26.b97e4a",
@@ -241,13 +180,13 @@
         "measurement": "",
         "precision": "",
         "retentionPolicy": "",
-        "database": "database",
+        "database": "duplicati",
         "precisionV18FluxV20": "ms",
         "retentionPolicyV18Flux": "",
         "org": "organisation",
-        "bucket": "bucket",
-        "x": 1570,
-        "y": 360,
+        "bucket": "duplicati",
+        "x": 1680,
+        "y": 240,
         "wires": []
     },
     {
@@ -266,7 +205,7 @@
         "randomUnits": "seconds",
         "drop": false,
         "x": 1000,
-        "y": 240,
+        "y": 200,
         "wires": [
             [
                 "1206c168.36e417"
@@ -278,7 +217,7 @@
         "type": "function",
         "z": "679c5775.a84ad8",
         "name": "backup",
-        "func": "msg.payload = [\n    {\n        measurement: \"files\",\n        fields: {\n            Deleted: msg.payload.Data.DeletedFiles,\n\t\t\tModified: msg.payload.Data.ModifiedFiles,\n\t\t\tExamined: msg.payload.Data.ExaminedFiles,\n\t\t\tOpened: msg.payload.Data.OpenedFiles,\n\t\t\tAdded: msg.payload.Data.AddedFiles,\n\t\t\tNotProcessed: msg.payload.Data.NotProcessedFiles,\n\t\t\tTooLarge: msg.payload.Data.TooLargeFiles,\n\t\t\tWithError: msg.payload.Data.FilesWithError,\n\t\t\tFilesUploaded: msg.payload.Data.BackendStatistics.FilesUploaded,\n\t\t\tFilesDownloaded: msg.payload.Data.BackendStatistics.FilesDownloaded,\n\t\t\tFilesDeleted: msg.payload.Data.BackendStatistics.FilesDeleted,\n\t\t\tUnknownFileCount: msg.payload.Data.BackendStatistics.UnknownFileCount,\n\t\t\tKnownFileCount: msg.payload.Data.BackendStatistics.KnownFileCount\n        },\n        tags:{\n\t\t\tBackupName: msg.payload.Extra[\"backup-name\"],\n\t\t\tMainOperation: msg.payload.Data.MainOperation,\n\t\t\tParsedResult: msg.payload.Data.ParsedResult,\n\t\t\tVersion: msg.payload.Data.Version\n        },\n        timestamp: new Date(msg.payload.Data.BeginTime).getTime()\n    },\n    {\n        measurement: \"bytes\",\n        fields: {\n\t\t\tModified: msg.payload.Data.SizeOfModifiedFiles,\n\t\t\tAdded: msg.payload.Data.SizeOfAddedFiles,\n\t\t\tExamined: msg.payload.Data.SizeOfExaminedFiles,\n\t\t\tOpened: msg.payload.Data.SizeOfOpenedFiles,\n\t\t\tUploaded: msg.payload.Data.BackendStatistics.BytesUploaded,\n\t\t\tDownloaded: msg.payload.Data.BackendStatistics.BytesDownloaded,\n\t\t\tUnknownFile: msg.payload.Data.BackendStatistics.UnknownFileSize,\n\t\t\tKnown: msg.payload.Data.BackendStatistics.KnownFileSize\n        },\n        tags:{\n\t\t\tBackupName: msg.payload.Extra[\"backup-name\"],\n\t\t\tMainOperation: msg.payload.Data.MainOperation,\n\t\t\tParsedResult: msg.payload.Data.ParsedResult,\n\t\t\tVersion: msg.payload.Data.Version\n        },\n        timestamp: new Date(msg.payload.Data.BeginTime).getTime()\n    },\n\t{\n        measurement: \"times\",\n        fields: {\n\t\t\tEndTime: new Date(msg.payload.Data.EndTime).getTime(),\n\t\t\tBeginTime: new Date(msg.payload.Data.BeginTime).getTime(),\n\t\t\tDuration: new Date(msg.payload.Data.EndTime).getTime()-new Date(msg.payload.Data.BeginTime).getTime(),\n        },\n        tags:{\n\t\t\tBackupName: msg.payload.Extra[\"backup-name\"],\n\t\t\tMainOperation: msg.payload.Data.MainOperation,\n\t\t\tParsedResult: msg.payload.Data.ParsedResult,\n\t\t\tVersion: msg.payload.Data.Version\n        },\n        timestamp: new Date(msg.payload.Data.BeginTime).getTime()\n    }\n];\nreturn msg;",
+        "func": "msg.payload = [\n    {\n        measurement: \"files\",\n        fields: {\n            Deleted: msg.payload.Data.DeletedFiles,\n\t\t\tModified: msg.payload.Data.ModifiedFiles,\n\t\t\tExamined: msg.payload.Data.ExaminedFiles,\n\t\t\tOpened: msg.payload.Data.OpenedFiles,\n\t\t\tAdded: msg.payload.Data.AddedFiles,\n\t\t\tNotProcessed: msg.payload.Data.NotProcessedFiles,\n\t\t\tTooLarge: msg.payload.Data.TooLargeFiles,\n\t\t\tWithError: msg.payload.Data.FilesWithError,\n\t\t\tFilesUploaded: msg.payload.Data.BackendStatistics.FilesUploaded,\n\t\t\tFilesDownloaded: msg.payload.Data.BackendStatistics.FilesDownloaded,\n\t\t\tFilesDeleted: msg.payload.Data.BackendStatistics.FilesDeleted,\n\t\t\tUnknownFileCount: msg.payload.Data.BackendStatistics.UnknownFileCount,\n\t\t\tKnownFileCount: msg.payload.Data.BackendStatistics.KnownFileCount,\n\t\t\tListCount: msg.payload.Data.BackendStatistics.BackupListCount\n        },\n        tags:{\n\t\t\tBackupName: msg.payload.Extra[\"backup-name\"],\n\t\t\tMainOperation: msg.payload.Data.MainOperation,\n\t\t\tParsedResult: msg.payload.Data.ParsedResult,\n\t\t\tVersion: msg.payload.Data.Version\n        },\n        timestamp: new Date(msg.payload.Data.BeginTime).getTime()\n    },\n    {\n        measurement: \"bytes\",\n        fields: {\n\t\t\tModified: msg.payload.Data.SizeOfModifiedFiles,\n\t\t\tAdded: msg.payload.Data.SizeOfAddedFiles,\n\t\t\tExamined: msg.payload.Data.SizeOfExaminedFiles,\n\t\t\tOpened: msg.payload.Data.SizeOfOpenedFiles,\n\t\t\tUploaded: msg.payload.Data.BackendStatistics.BytesUploaded,\n\t\t\tDownloaded: msg.payload.Data.BackendStatistics.BytesDownloaded,\n\t\t\tUnknownFile: msg.payload.Data.BackendStatistics.UnknownFileSize,\n\t\t\tKnown: msg.payload.Data.BackendStatistics.KnownFileSize\n        },\n        tags:{\n\t\t\tBackupName: msg.payload.Extra[\"backup-name\"],\n\t\t\tMainOperation: msg.payload.Data.MainOperation,\n\t\t\tParsedResult: msg.payload.Data.ParsedResult,\n\t\t\tVersion: msg.payload.Data.Version\n        },\n        timestamp: new Date(msg.payload.Data.BeginTime).getTime()\n    },\n\t{\n        measurement: \"times\",\n        fields: {\n\t\t\tEndTime: new Date(msg.payload.Data.EndTime).getTime(),\n\t\t\tBeginTime: new Date(msg.payload.Data.BeginTime).getTime(),\n\t\t\tDuration: new Date(msg.payload.Data.EndTime).getTime()-new Date(msg.payload.Data.BeginTime).getTime(),\n        },\n        tags:{\n\t\t\tBackupName: msg.payload.Extra[\"backup-name\"],\n\t\t\tMainOperation: msg.payload.Data.MainOperation,\n\t\t\tParsedResult: msg.payload.Data.ParsedResult,\n\t\t\tVersion: msg.payload.Data.Version\n        },\n        timestamp: new Date(msg.payload.Data.BeginTime).getTime()\n    }\n];\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -288,27 +227,9 @@
         "wires": [
             [
                 "4b256453.f0d4d4",
-                "349bf0d0.08bde8",
                 "2ef4e93a.5e2a56"
             ]
         ]
-    },
-    {
-        "id": "2561a055.5c55d8",
-        "type": "debug",
-        "z": "679c5775.a84ad8",
-        "name": "msg",
-        "active": true,
-        "tosidebar": true,
-        "console": true,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 470,
-        "y": 140,
-        "wires": []
     },
     {
         "id": "47564f7e.896c38",
@@ -321,11 +242,10 @@
         "initialize": "",
         "finalize": "",
         "x": 720,
-        "y": 180,
+        "y": 200,
         "wires": [
             [
                 "4b256453.f0d4d4",
-                "349bf0d0.08bde8",
                 "2ef4e93a.5e2a56"
             ]
         ]
@@ -345,7 +265,6 @@
         "wires": [
             [
                 "4b256453.f0d4d4",
-                "349bf0d0.08bde8",
                 "2ef4e93a.5e2a56"
             ]
         ]
@@ -358,24 +277,8 @@
         "precision": "ms",
         "retentionPolicy": "",
         "name": "",
-        "x": 1060,
+        "x": 1020,
         "y": 40,
-        "wires": []
-    },
-    {
-        "id": "349bf0d0.08bde8",
-        "type": "debug",
-        "z": "679c5775.a84ad8",
-        "name": "",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 1050,
-        "y": 100,
         "wires": []
     },
     {
@@ -406,5 +309,106 @@
                 "1206c168.36e417"
             ]
         ]
+    },
+    {
+        "id": "7d91ffe7.fd07d",
+        "type": "file",
+        "z": "679c5775.a84ad8",
+        "name": "write to file",
+        "filename": "/share/duplicati/received_messages",
+        "appendNewline": true,
+        "createDir": true,
+        "overwriteFile": "false",
+        "encoding": "none",
+        "x": 330,
+        "y": 80,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "85700e66.8ffdf8",
+        "type": "file in",
+        "z": "679c5775.a84ad8",
+        "name": "",
+        "filename": "/share/duplicati/received_messages",
+        "format": "lines",
+        "chunk": false,
+        "sendError": false,
+        "encoding": "none",
+        "x": 430,
+        "y": 400,
+        "wires": [
+            [
+                "7c0f221e.09a594"
+            ]
+        ]
+    },
+    {
+        "id": "a4e09259.087e7",
+        "type": "inject",
+        "z": "679c5775.a84ad8",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 140,
+        "y": 400,
+        "wires": [
+            [
+                "85700e66.8ffdf8"
+            ]
+        ]
+    },
+    {
+        "id": "d7568d07.bf6e",
+        "type": "comment",
+        "z": "679c5775.a84ad8",
+        "name": "reprocess saved messages",
+        "info": "",
+        "x": 300,
+        "y": 360,
+        "wires": []
+    },
+    {
+        "id": "8690da6c.97a75",
+        "type": "catch",
+        "z": "679c5775.a84ad8",
+        "name": "",
+        "scope": [
+            "7c0f221e.09a594"
+        ],
+        "uncaught": false,
+        "x": 280,
+        "y": 540,
+        "wires": [
+            [
+                "4def1099.0e74d8"
+            ]
+        ]
+    },
+    {
+        "id": "4def1099.0e74d8",
+        "type": "http response",
+        "z": "679c5775.a84ad8",
+        "name": "",
+        "statusCode": "400",
+        "headers": {},
+        "x": 420,
+        "y": 540,
+        "wires": []
     }
 ]
