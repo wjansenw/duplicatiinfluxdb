@@ -14,4 +14,4 @@ Nodered, influxdb and grafana need to be installed. As I was playing with Home A
 * Import the project in nodered. 
 * Update the nodered project to use the correct influxdb settings. 
 * Configure duplicati to use this as http-reporting. Make sure you configure duplicati to use json as report format. 
-* Import the [grafana dashboard](grafana.json), and make sure it points to the correct influxdb database.
+* Import the [grafana dashboard](grafana.json), and make sure it points to the correct influxdb database. Also update the variables to the names of your backup sets.
