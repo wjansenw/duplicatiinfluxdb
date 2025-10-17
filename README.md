@@ -1,5 +1,7 @@
 Duplicati monitoring 
 ====================
+### Not maintained
+This is no longer maintained. Consider using https://github.com/txxa/hass-duplicati/ which can also be used to track some history.
 
 ### About
 
